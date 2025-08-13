@@ -1,16 +1,17 @@
 class Solution {
     public int solution(String A, String B) {
         int count = 0;
-        String sub = A;
+        String copy = A;
         
         for (int i = 0; i < A.length(); i++) {
-            if (sub.equals(B)) {
+            if (copy.equals(B)) {
                 return count;
             }
             
-            
-            String str = sub.substring(A.length() - 1);
-            sub = str + sub.substring(0, A.length() - 1);
+            // 맨 마지막 글자
+            String last = copy.substring(A.length() - 1);
+            // copy = 맨 마지막 글자 + 맨 마지막 글자를 제외한 글자
+            copy = last + copy.substring(0, A.length() - 1);
             count++;
         }
         
