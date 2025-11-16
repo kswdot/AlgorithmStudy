@@ -1,27 +1,30 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int k = sc.nextInt();
+    public static void main(String[] args) throws IOException {
 
-        int[] arr = new int[n];
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        // 입력 받기
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
+        int num = Integer.parseInt(st.nextToken());
+        int money = Integer.parseInt(st.nextToken());
         int count = 0;
 
-        // 큰 숫자부터 비교
-        for (int i = n - 1; i >= 0; i--) {
-            if (k >= arr[i]) {
-                count += k / arr[i];
-                k %= arr[i];
-            }
+        int arr[] = new int[num];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = Integer.parseInt(br.readLine());
+        }
+
+            for (int i = arr.length - 1; i >= 0; i--) {
+                if (money >= arr[i]) {
+                    count += money / arr[i];
+                    money %= arr[i];
+                }
         }
 
         System.out.println(count);
