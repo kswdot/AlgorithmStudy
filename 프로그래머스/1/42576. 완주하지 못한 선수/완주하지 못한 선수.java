@@ -1,25 +1,26 @@
-import java.util.*;
+import java.util.HashMap;
 
 class Solution {
     public String solution(String[] participant, String[] completion) {
+        String answer = "";
         
-        HashMap<String, Integer> hashMap = new HashMap<>();
+        HashMap<String, Integer> map = new HashMap<>();
         
-        // key -> 완주한 선수 이름, value -> 이름 개수
-        for (String string : completion) {
-            hashMap.put(string, hashMap.getOrDefault(string, 0) + 1);
+        for (String p : participant) {
+            map.put(p, map.getOrDefault(p, 0) + 1);
         }
         
-        for (String string : participant) {
-            // 만약 값이 0이거나 해시맵에 값이 없으면 답으로 반환
-            if (hashMap.getOrDefault(string, 0) == 0) {
-                return string;
+        for (String c : completion) {
+            map.put(c, map.get(c) - 1);
+        }
+        
+        for (String key : map.keySet()) {
+            if (map.get(key) != 0) {
+                answer = key;
+                break;
             }
-            
-            // 참가한 선수 이름과 비교해서 value -> -1
-            hashMap.put(string, hashMap.get(string) - 1);
         }
         
-        return null;
+        return answer;
     }
 }
