@@ -1,12 +1,11 @@
 class Solution {
     public int solution(String num_str) {
-        int answer = 0;
+        int sum = 0;
         
         for (int i = 0; i < num_str.length(); i++) {
-            char chr = num_str.charAt(i);
-            int result = chr - '0';
-            answer += result;
+            sum += num_str.charAt(i) - '0';
         }
-        return answer;
+        
+        return sum;
     }
 }
